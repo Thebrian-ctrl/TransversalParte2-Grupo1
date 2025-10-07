@@ -5,7 +5,9 @@
  */
 package Vista;
 
+import Modelo.Materia;
 import Modelo.alumno;
+import Percistencia.MateriaData;
 import Percistencia.alumnoData;
 import java.time.LocalDate;
 import java.util.List;
@@ -102,7 +104,57 @@ public class Universidad_Gp1 {
 //        for (alumno a : listaActivos) {
 //            System.out.println(a);
 //        }
-        
+        //----------Prueba de materia-----------
+    MateriaData mate = new MateriaData();
+          //-------creamos la materia1------
+          
+          //Materia mate1 = new Materia(1,"Matematica",2025,1);
+          
+          //--------Prueva de guradado de la materia----------.
+          
+          //mate.guardarMateria(mate1);
+          
+          //-----creamos la materia2-----
+          
+          //Materia mate2 = new Materia("laboratorio",2025,1);
+          
+          //-----Prueva de guradado de la materia.-------
+          
+          //mate.guardarMateria(mate2);
+          
+          //-----provamos el dar de baja a la materia------
+          
+          //mate.darBajaMateria(1);
+          
+          //-----provamos el dar de alta a la materia-------
+          
+          //mate.darAltaMateria(1);
+          
+          //-----------modificamos la fecha de la materia--------- 
+          
+          //Materia buscada = mate.buscarMateria(1);
+          
+          //buscada.setAnio(2015);
+          
+          //mate.actualizarMateria(buscada);
+          
+          //---------Prueva de listar materia----------
+          
+          //List<Materia> lista = mate.listarMateriaActivos();
+          //for(Materia materia: lista){
+          //    System.out.println(materia);
+          //}
+          
+          //-------Eliminamos la materia-----------
+          
+          mate.eliminarMateria(1);
+          
+          //---------Voolvemos a probar listar materia----------
+          
+          List<Materia> lista2 = mate.listarMateriaActivos();
+          for(Materia materia: lista2){
+              System.out.println(materia);
+          }
     }
     
 }
