@@ -175,30 +175,55 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         jbActualizar.setBorder(null);
         jbActualizar.setBorderPainted(false);
         jbActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbActualizarActionPerformed(evt);
+            }
+        });
 
         jbAlta.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jbAlta.setText("Alta");
         jbAlta.setBorder(null);
         jbAlta.setBorderPainted(false);
         jbAlta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAltaActionPerformed(evt);
+            }
+        });
 
         jbBaja.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jbBaja.setText("Baja");
         jbBaja.setBorder(null);
         jbBaja.setBorderPainted(false);
         jbBaja.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBajaActionPerformed(evt);
+            }
+        });
 
         jbEliminar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jbEliminar.setText("Eliminar");
         jbEliminar.setBorder(null);
         jbEliminar.setBorderPainted(false);
         jbEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
 
         jbListar.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         jbListar.setText("Listar");
         jbListar.setBorder(null);
         jbListar.setBorderPainted(false);
         jbListar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbListarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpBotonesLayout = new javax.swing.GroupLayout(jpBotones);
         jpBotones.setLayout(jpBotonesLayout);
@@ -314,6 +339,21 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         
         try{
             
+            // valido campos vacios
+            if (jtDni.getText().trim().isEmpty()||
+                    jtApellido.getText().trim().isEmpty()||
+                    jtNombre.getText().trim().isEmpty() ||
+                    jDateChooser1.getDate()== null ||
+                    jtEstado.getText().trim().isEmpty()
+                    
+                    ){
+                JOptionPane.showMessageDialog(this, "Por favor complete los campos");
+                return;
+            }
+            
+            
+            // conversion de los datos ingresadeos
+            
             
             Integer dni = Integer.parseInt(jtDni.getText());
             String apellido = jtApellido.getText();
@@ -322,10 +362,11 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             LocalDate fechaNacimiento = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             Integer estado = Integer.parseInt(jtEstado.getText());
             
+            //creamos alumno el cual le asignamos los datos ingresados
             
             alumno a = new alumno( dni, apellido, nombre, fechaNacimiento, estado);
             
-            
+            // lo guardqamos en la base de datos
             aluData.guardarAlumno(a);
             
             
@@ -335,16 +376,30 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             
         
             limpiarCampos();
-        
+        }catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "El dni y el estado deben ser de caracter numerico");
         }catch(Exception e){
             JOptionPane.showMessageDialog(this, "Error al guardar el alumno"+e.getMessage());
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
-       int dni = Integer.parseInt(jtDni.getText());
+      
+        try{
+            
+        
+        
+            // validadamos el campo vacio
+            
+        if(jtDni.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un dni a buscar");
+            
+        }
+    
+            //validamos q sea un numero
+        int dni = Integer.parseInt(jtDni.getText());
        
-       
+       // buscamos un alumno en la base de datos
        alumno a= aluData.buscarAlumnonDni(dni);
        
        if(a != null){
@@ -362,8 +417,37 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
            limpiarCampos();
            
        }
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "El dni debe de ser de caracter numerico ");
+       limpiarCampos();
+        //nos volvemos a posicionar en el jtext dni
+         jtDni.requestFocus();
+         
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Error al buscar el alumno");
+        }
        
     }//GEN-LAST:event_botonBuscarActionPerformed
+
+    private void jbAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbAltaActionPerformed
+
+    private void jbBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBajaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbBajaActionPerformed
+
+    private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbActualizarActionPerformed
+
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbListarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
