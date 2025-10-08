@@ -68,6 +68,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         jbListar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
+        botonBuscar = new javax.swing.JButton();
 
         jPanelFondo.setBackground(new java.awt.Color(0, 102, 153));
 
@@ -251,6 +252,13 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable);
 
+        botonBuscar.setText("buscar");
+        botonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelFondoLayout = new javax.swing.GroupLayout(jPanelFondo);
         jPanelFondo.setLayout(jPanelFondoLayout);
         jPanelFondoLayout.setHorizontalGroup(
@@ -258,10 +266,12 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             .addGroup(jPanelFondoLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(botonBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jpBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(jPanelFondoLayout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addComponent(jlTitulo)
@@ -272,10 +282,15 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             .addGroup(jPanelFondoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlTitulo)
-                .addGap(12, 12, 12)
-                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jpBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFondoLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jpBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jpDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanelFondoLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(botonBuscar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(279, 279, 279))
@@ -296,26 +311,63 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        // TODO add your handling code here:
+        
         try{
+            
+            
             Integer dni = Integer.parseInt(jtDni.getText());
             String apellido = jtApellido.getText();
             String nombre = jtNombre.getText();
             Date fecha = jDateChooser1.getDate();
             LocalDate fechaNacimiento = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             Integer estado = Integer.parseInt(jtEstado.getText());
+            
+            
+            alumno a = new alumno( dni, apellido, nombre, fechaNacimiento, estado);
+            
+            
+            aluData.guardarAlumno(a);
+            
+            
+            JOptionPane.showMessageDialog(this, "Alumno guardado correctamente");
+            
         
             
         
+            limpiarCampos();
         
-        
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "El dni debe ser un numero");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error al guardar el alumno"+e.getMessage());
         }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
+    private void botonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBuscarActionPerformed
+       int dni = Integer.parseInt(jtDni.getText());
+       
+       
+       alumno a= aluData.buscarAlumnonDni(dni);
+       
+       if(a != null){
+           // cargamos los datos de jtext
+
+           jtApellido.setText(a.getApellido());
+           jtNombre.setText(a.getNombre());
+           jtEstado.setText(String.valueOf(a.getEstado()));
+           jDateChooser1.setDate(java.sql.Date.valueOf(a.getFechaNacimiento()));
+           
+           
+       }else{
+           JOptionPane.showMessageDialog(this, "no se encontro el alumno con ese dni");
+           
+           limpiarCampos();
+           
+       }
+       
+    }//GEN-LAST:event_botonBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonBuscar;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -354,4 +406,16 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         
         jTable.setModel(modelo);
     }
+    
+    
+    private void limpiarCampos(){
+        jtDni.setText("");
+        jtApellido.setText("");
+        jtNombre.setText("");
+        jtEstado.setText("");
+        jDateChooser1.setDate(null); 
+    }
+    
+    
+    
 }

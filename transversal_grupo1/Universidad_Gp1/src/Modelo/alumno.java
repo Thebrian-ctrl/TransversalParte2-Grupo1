@@ -6,6 +6,7 @@
 package Modelo;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 
 
@@ -43,6 +44,7 @@ public class alumno {
         this.fechaNacimiento = fecha;
         this.estado = estado;
     }
+
 
     
     public int getIdAlumno() {
