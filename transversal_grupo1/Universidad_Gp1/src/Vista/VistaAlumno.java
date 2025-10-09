@@ -10,6 +10,7 @@ import Percistencia.alumnoData;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -329,7 +330,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 450, Short.MAX_VALUE)
+            .addComponent(jPanelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 565, Short.MAX_VALUE)
         );
 
         pack();
@@ -430,23 +431,243 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void jbAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAltaActionPerformed
-        // TODO add your handling code here:
+       
+        try{
+             int dni= Integer.parseInt(jtDni.getText().trim());
+        
+        //buscamos el alumno 
+        alumno a = aluData.buscarAlumnonDni(dni);
+
+        // validadamos el campo vacio
+        if (jtDni.getText().trim().isEmpty()||
+                    jtApellido.getText().trim().isEmpty()||
+                    jtNombre.getText().trim().isEmpty() ||
+                    jDateChooser1.getDate()== null ||
+                    jtEstado.getText().trim().isEmpty()
+                    
+                    ){
+                JOptionPane.showMessageDialog(this, "Por favor complete los campos");
+                return;
+            }
+            
+       
+        
+        if(a !=null){
+            int confirmar = JOptionPane.showConfirmDialog(this, "Desea dar de Alta al alumno "+a.getNombre()+", "+a.getApellido()+"?",
+                    "Confirmar Alta", JOptionPane.YES_NO_OPTION);
+            
+            
+            if(confirmar == JOptionPane.YES_OPTION){
+                aluData.darAlta(a.getIdAlumno());
+                limpiarCampos();
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "No se encontro ningun alumno con ese dni");
+        }
+        
+        
+        }catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "El dni debe de ser de caracteer numerico");
+             //nos volvemos a posicionar en el jtext dni
+         jtDni.requestFocus();
+         
+         
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Error al dar de Alta al alumno");
+            limpiarCampos();
+        }
     }//GEN-LAST:event_jbAltaActionPerformed
 
     private void jbBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBajaActionPerformed
-        // TODO add your handling code here:
+        
+        
+
+        try{
+
+        // validadamos el campo vacio
+            
+      
+        
+        int dni= Integer.parseInt(jtDni.getText().trim());
+        
+        //buscamos el alumno 
+        alumno a = aluData.buscarAlumnonDni(dni);
+        
+        if (jtDni.getText().trim().isEmpty()||
+                    jtApellido.getText().trim().isEmpty()||
+                    jtNombre.getText().trim().isEmpty() ||
+                    jDateChooser1.getDate()== null ||
+                    jtEstado.getText().trim().isEmpty()
+                    
+                    ){
+                JOptionPane.showMessageDialog(this, "Por favor complete los campos");
+                return;
+            }
+        
+        if(a !=null){
+            int confirmar = JOptionPane.showConfirmDialog(this, "Desea dar de baja al alumno "+a.getNombre()+", "+a.getApellido()+"?",
+                    "Confirmar baja", JOptionPane.YES_NO_OPTION);
+            
+            
+            if(confirmar == JOptionPane.YES_OPTION){
+                aluData.darBaja(a.getIdAlumno());
+                limpiarCampos();
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "No se encontro ningun alumno con ese dni");
+        }
+        }catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "El dni debe de ser de caracteer numerico");
+             //nos volvemos a posicionar en el jtext dni
+         jtDni.requestFocus();
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Error al dar de baja al alumno");
+            limpiarCampos();
+        }
+        
     }//GEN-LAST:event_jbBajaActionPerformed
 
     private void jbActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbActualizarActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
+        try{
+        //validacion de campos
+         if (jtDni.getText().trim().isEmpty()||
+                    jtApellido.getText().trim().isEmpty()||
+                    jtNombre.getText().trim().isEmpty() ||
+                    jDateChooser1.getDate()== null ||
+                    jtEstado.getText().trim().isEmpty()
+                    
+                    ){
+                JOptionPane.showMessageDialog(this, "Por favor complete los campos");
+                return;
+            }
+         
+         
+         // convertimos los valores
+             Integer dni = Integer.parseInt(jtDni.getText());
+            String apellido = jtApellido.getText();
+            String nombre = jtNombre.getText();
+            Date fecha = jDateChooser1.getDate();
+            LocalDate fechaNacimiento = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Integer estado = Integer.parseInt(jtEstado.getText());
+         
+            
+            // buscamos el alumno para obtener su id
+            
+            
+            alumno a= aluData.buscarAlumnonDni(dni);
+            
+            
+            if(a== null){
+                JOptionPane.showMessageDialog(this, "no se encontro un alumno con ese dni");
+                limpiarCampos();
+            
+            }
+            
+            
+            // Actualizamos atributos con los nuevos valores
+            
+            
+            a.setApellido(apellido);
+            a.setNombre(nombre);
+            a.setFechaNacimiento(fechaNacimiento);
+            a.setEstado(estado);
+            
+            
+            // guardamos cambios en la base de datos 
+            
+            aluData.actualizarAlumno(a);
+            
+            JOptionPane.showMessageDialog(this, "Alumno actualizado correctamente");
+            
+            limpiarCampos();
+        }catch (NumberFormatException e){
+            
+            JOptionPane.showMessageDialog(this, "El DNI y el Estado deben de ser numeros enteros");
+            limpiarCampos();
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this, "Error al actualoizat el alumno");
+            limpiarCampos();
+        }
+            
+         
+        
+        
+        
+        
     }//GEN-LAST:event_jbActualizarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
-        // TODO add your handling code here:
+       
+        //validacion de campos
+         if (jtDni.getText().trim().isEmpty()||
+                    jtApellido.getText().trim().isEmpty()||
+                    jtNombre.getText().trim().isEmpty() ||
+                    jDateChooser1.getDate()== null ||
+                    jtEstado.getText().trim().isEmpty()
+                    
+                    ){
+                JOptionPane.showMessageDialog(this, "Por favor complete los campos");
+                return;
+            }
+         
+         
+         // convertimos los valores
+             Integer dni = Integer.parseInt(jtDni.getText());
+        
+        // buscamos el alumno para obtener su id
+            
+            
+            alumno a= aluData.buscarAlumnonDni(dni);
+            
+            
+             if(a !=null){
+            int confirmar = JOptionPane.showConfirmDialog(this, "Esta seguro que desea eliminar al alumno:  "+a.getNombre()+", "+a.getApellido()+"?",
+                    "Confirmar Eliminacion", JOptionPane.YES_NO_OPTION);
+            
+            
+            if(confirmar == JOptionPane.YES_OPTION){
+                aluData.eliminarAumno(a.getIdAlumno());
+                limpiarCampos();
+            }
+            
+          
+            
+            
+        
+        
+             }  
     }//GEN-LAST:event_jbEliminarActionPerformed
 
     private void jbListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbListarActionPerformed
-        // TODO add your handling code here:
+        
+        
+        //Limpio las filas existentes en mi tabla
+        limpiarTabla(); 
+        
+        
+        List<alumno> listita = aluData.listarAlumnosActivos();
+        
+        for(alumno alu : listita){
+            modelo.addRow(new Object[]{
+             alu.getIdAlumno(),
+             alu.getDni(),
+             alu.getApellido(),
+             alu.getNombre(),
+             alu.getFechaNacimiento(),
+             alu.getEstado()
+            });
+            
+        }
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jbListarActionPerformed
 
 
@@ -500,6 +721,10 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         jDateChooser1.setDate(null); 
     }
     
+    
+    private void limpiarTabla(){
+        modelo.setRowCount(0);
+    }
     
     
 }
