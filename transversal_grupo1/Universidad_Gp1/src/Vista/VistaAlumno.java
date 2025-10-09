@@ -25,7 +25,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
      */
     
     private alumnoData aluData = new alumnoData();
-    private alumno alumnoActual = null;
+    
     
     private DefaultTableModel modelo = new DefaultTableModel();
     

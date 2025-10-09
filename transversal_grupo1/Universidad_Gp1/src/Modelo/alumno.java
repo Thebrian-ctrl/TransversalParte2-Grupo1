@@ -17,12 +17,12 @@ import java.util.Date;
  * @author paula
  */
 public class alumno {
-    int idAlumno;
-    int dni;
-    String apellido;
-    String nombre;
-    LocalDate fechaNacimiento;
-    int estado;
+    private int idAlumno;
+    private int dni;
+    private String apellido;
+    private String nombre;
+    private LocalDate fechaNacimiento;
+    private int estado;
 
     public alumno() {
     }

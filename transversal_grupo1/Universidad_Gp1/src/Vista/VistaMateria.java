@@ -21,8 +21,8 @@ public class VistaMateria extends javax.swing.JInternalFrame {
      * Creates new form VistaMateria
      */
     
-    DefaultTableModel modelo = new DefaultTableModel();
-    MateriaData mate = new MateriaData();
+    private DefaultTableModel modelo = new DefaultTableModel();
+    private MateriaData mate = new MateriaData();
     public VistaMateria() {
         initComponents();
         cabecera();

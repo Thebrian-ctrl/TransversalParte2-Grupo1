@@ -1,7 +1,6 @@
 package Percistencia;
 
 import Modelo.Materia;
-import Modelo.alumno;
 import Modelo.myConexion;
 import java.sql.Connection;
 import java.sql.Date;

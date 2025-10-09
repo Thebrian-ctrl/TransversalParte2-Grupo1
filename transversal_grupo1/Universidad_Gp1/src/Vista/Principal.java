@@ -64,11 +64,6 @@ public class Principal extends javax.swing.JFrame {
         );
 
         jmAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/graduado.png"))); // NOI18N
-        jmAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmAlumnoActionPerformed(evt);
-            }
-        });
 
         jMenuItem1.setText("Datos");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,11 +91,6 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar2.add(jmInscripcion);
 
         jmSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-sesion.png"))); // NOI18N
-        jmSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmSalirActionPerformed(evt);
-            }
-        });
 
         jmiSalir.setText("Salir");
         jmiSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -128,11 +118,6 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void jmAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmAlumnoActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jmAlumnoActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         jdEscritorio.removeAll();
@@ -150,11 +135,6 @@ public class Principal extends javax.swing.JFrame {
         mate.setVisible(true);
         jdEscritorio.add(mate);
     }//GEN-LAST:event_jmiMateriaActionPerformed
-
-    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_jmSalirActionPerformed
 
     private void jmiSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalirActionPerformed
         // TODO add your handling code here:
