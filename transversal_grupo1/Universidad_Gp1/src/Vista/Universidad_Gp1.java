@@ -5,8 +5,10 @@
  */
 package Vista;
 
+import Modelo.Inscripcion;
 import Modelo.Materia;
 import Modelo.alumno;
+import Percistencia.InscripcionData;
 import Percistencia.MateriaData;
 import Percistencia.alumnoData;
 import java.time.LocalDate;
@@ -105,22 +107,26 @@ public class Universidad_Gp1 {
 //            System.out.println(a);
 //        }
         //----------Prueba de materia-----------
-    MateriaData mate = new MateriaData();
-          //-------creamos la materia1------
-          
-          //Materia mate1 = new Materia(1,"Matematica",2025,1);
-          
-          //--------Prueva de guradado de la materia----------.
-          
-          //mate.guardarMateria(mate1);
-          
-          //-----creamos la materia2-----
-          
-          //Materia mate2 = new Materia("laboratorio",2025,1);
-          
-          //-----Prueva de guradado de la materia.-------
-          
-          //mate.guardarMateria(mate2);
+//    MateriaData mate = new MateriaData();
+//          //-------creamos la materia1------
+//          
+//          Materia mate1 = new Materia("Matematica",2025,1);
+//          
+//          //--------Prueva de guradado de la materia----------.
+//          
+//          mate.guardarMateria(mate1);
+//          
+//          //-----creamos la materia2-----
+//          
+//          Materia mate2 = new Materia("laboratorio",2025,1);
+//          
+//          //-----Prueva de guradado de la materia.-------
+//          
+//          mate.guardarMateria(mate2);
+//          
+//          Materia mate3 = new Materia("Base de datos", 2024, 1);
+//          
+//          mate.guardarMateria(mate3);
           
           //-----provamos el dar de baja a la materia------
           
@@ -146,15 +152,54 @@ public class Universidad_Gp1 {
           //}
           
           //-------Eliminamos la materia-----------
-          
-          mate.eliminarMateria(1);
-          
-          //---------Voolvemos a probar listar materia----------
-          
-          List<Materia> lista2 = mate.listarMateriaActivos();
-          for(Materia materia: lista2){
-              System.out.println(materia);
-          }
+//          
+//          mate.eliminarMateria(1);
+//          
+//          //---------Voolvemos a probar listar materia----------
+//          
+//          List<Materia> lista2 = mate.listarMateriaActivos();
+//          for(Materia materia: lista2){
+//              System.out.println(materia);
+//          }
+//
+//    alumnoData alu = new alumnoData();
+////    
+//    InscripcionData id = new InscripcionData();
+////    
+////    alumno brayan = alu.buscarAlumnonDni(42278291);
+////    Materia materia = mate.buscarMateria(2);
+////    Inscripcion i = new Inscripcion(8, brayan, materia);
+////    
+//////    alumno paula = alu.buscarAlumnonDni(42516816);
+////    
+////    Materia materia2 = mate.buscarMateria(5);
+////    
+////    
+////    Inscripcion i2 = new Inscripcion(2, brayan, materia2);
+////    
+////    id.guardarInscripcion(i);
+////    
+////    id.guardarInscripcion(i2);
+//    
+//    
+//    List<Materia> materiasInscriptas = id.listaMateriasInscriptas(17);
+//        System.out.println("Materias inscriptas del alumno");
+//        
+//        for (Materia m : materiasInscriptas) {
+//            System.out.println("id" + m.getIdMateria() + "nombre: " + m.getNombre() + "Año: " + m.getAnio());
+//        }
+//    
+////    
+////    id.anularInscripcion(17, 2);
+//        System.out.println("--------------------------------------------------");
+//
+//    List<Materia> materiasNoInscriptas = id.listaMateriasNoInscriptas(17);
+//        System.out.println("Materias no inscriptas del alumno");
+//        
+//        for (Materia m : materiasNoInscriptas) {
+//            System.out.println("id" + m.getIdMateria() + "nombre: " + m.getNombre() + "Año: " + m.getAnio());
+//        }
+//    
     }
     
 }
