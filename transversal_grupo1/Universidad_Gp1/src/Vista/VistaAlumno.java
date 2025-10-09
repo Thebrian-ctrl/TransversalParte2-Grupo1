@@ -70,6 +70,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         botonBuscar = new javax.swing.JButton();
+        jbCerrar = new javax.swing.JButton();
 
         jPanelFondo.setBackground(new java.awt.Color(0, 102, 153));
 
@@ -285,29 +286,42 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             }
         });
 
+        jbCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar.png"))); // NOI18N
+        jbCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCerrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelFondoLayout = new javax.swing.GroupLayout(jPanelFondo);
         jPanelFondo.setLayout(jPanelFondoLayout);
         jPanelFondoLayout.setHorizontalGroup(
             jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelFondoLayout.createSequentialGroup()
+            .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelFondoLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jpDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(botonBuscar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jpBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
-            .addComponent(jScrollPane1)
-            .addGroup(jPanelFondoLayout.createSequentialGroup()
-                .addGap(215, 215, 215)
-                .addComponent(jlTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFondoLayout.createSequentialGroup()
+                        .addComponent(jlTitulo)
+                        .addGap(201, 201, 201)
+                        .addComponent(jbCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelFondoLayout.createSequentialGroup()
+                        .addComponent(botonBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jpBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanelFondoLayout.setVerticalGroup(
             jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlTitulo)
+                .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelFondoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jbCerrar))
+                    .addComponent(jlTitulo))
                 .addGroup(jPanelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFondoLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
@@ -468,7 +482,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         
         
         }catch (NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "El dni debe de ser de caracteer numerico");
+            JOptionPane.showMessageDialog(this, "El dni debe de ser de caracter numerico");
              //nos volvemos a posicionar en el jtext dni
          jtDni.requestFocus();
          
@@ -590,7 +604,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El DNI y el Estado deben de ser numeros enteros");
             limpiarCampos();
         }catch(Exception ex){
-            JOptionPane.showMessageDialog(this, "Error al actualoizat el alumno");
+            JOptionPane.showMessageDialog(this, "Error al actualizar el alumno" + ex.getMessage());
             limpiarCampos();
         }
             
@@ -632,7 +646,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
             
             if(confirmar == JOptionPane.YES_OPTION){
                 aluData.eliminarAumno(a.getIdAlumno());
-                limpiarCampos();
+                limpiarCampos();                           
             }
             
           
@@ -670,6 +684,11 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_jbListarActionPerformed
 
+    private void jbCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCerrarActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jbCerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonBuscar;
@@ -689,6 +708,7 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbAlta;
     private javax.swing.JButton jbBaja;
+    private javax.swing.JButton jbCerrar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbListar;

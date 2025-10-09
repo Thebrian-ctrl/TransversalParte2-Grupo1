@@ -45,8 +45,10 @@ public class Principal extends javax.swing.JFrame {
         jmAlumno = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jmMateria = new javax.swing.JMenu();
+        jmiMateria = new javax.swing.JMenuItem();
         jmInscripcion = new javax.swing.JMenu();
         jmSalir = new javax.swing.JMenu();
+        jmiSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,12 +81,35 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar2.add(jmAlumno);
 
         jmMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cuadernos.png"))); // NOI18N
+
+        jmiMateria.setText("Materia");
+        jmiMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiMateriaActionPerformed(evt);
+            }
+        });
+        jmMateria.add(jmiMateria);
+
         jMenuBar2.add(jmMateria);
 
         jmInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/documento.png"))); // NOI18N
         jMenuBar2.add(jmInscripcion);
 
         jmSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-sesion.png"))); // NOI18N
+        jmSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmSalirActionPerformed(evt);
+            }
+        });
+
+        jmiSalir.setText("Salir");
+        jmiSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSalirActionPerformed(evt);
+            }
+        });
+        jmSalir.add(jmiSalir);
+
         jMenuBar2.add(jmSalir);
 
         setJMenuBar(jMenuBar2);
@@ -116,6 +141,25 @@ public class Principal extends javax.swing.JFrame {
         alu.setVisible(true);
         jdEscritorio.add(alu);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jmiMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiMateriaActionPerformed
+        // TODO add your handling code here:
+        jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        VistaMateria mate = new VistaMateria();
+        mate.setVisible(true);
+        jdEscritorio.add(mate);
+    }//GEN-LAST:event_jmiMateriaActionPerformed
+
+    private void jmSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmSalirActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jmSalirActionPerformed
+
+    private void jmiSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jmiSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,5 +204,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jmInscripcion;
     private javax.swing.JMenu jmMateria;
     private javax.swing.JMenu jmSalir;
+    private javax.swing.JMenuItem jmiMateria;
+    private javax.swing.JMenuItem jmiSalir;
     // End of variables declaration//GEN-END:variables
 }

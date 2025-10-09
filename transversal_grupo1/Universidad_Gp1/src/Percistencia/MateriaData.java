@@ -55,7 +55,7 @@ public class MateriaData {
             ps.setInt(1, idMateria); //Le damos el valor
             int actualisado = ps.executeUpdate(); // Nos da el valor de las filas modificadas
             if (actualisado == 1) {
-                JOptionPane.showMessageDialog(null, "Materia borrada exitozamente");
+                JOptionPane.showMessageDialog(null, "Materia dada de baja");
             } else {
                 JOptionPane.showMessageDialog(null, "No se encontro la materia con ese ID");
             }
