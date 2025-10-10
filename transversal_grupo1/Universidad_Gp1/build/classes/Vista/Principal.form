@@ -44,6 +44,13 @@
               <Image iconType="3" name="/Imagenes/documento.png"/>
             </Property>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="jmInscripciones">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Inscripcion"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jmSalir">
           <Properties>

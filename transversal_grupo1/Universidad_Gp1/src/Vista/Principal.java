@@ -47,6 +47,7 @@ public class Principal extends javax.swing.JFrame {
         jmMateria = new javax.swing.JMenu();
         jmiMateria = new javax.swing.JMenuItem();
         jmInscripcion = new javax.swing.JMenu();
+        jmInscripciones = new javax.swing.JMenuItem();
         jmSalir = new javax.swing.JMenu();
         jmiSalir = new javax.swing.JMenuItem();
 
@@ -88,6 +89,10 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar2.add(jmMateria);
 
         jmInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/documento.png"))); // NOI18N
+
+        jmInscripciones.setText("Inscripcion");
+        jmInscripcion.add(jmInscripciones);
+
         jMenuBar2.add(jmInscripcion);
 
         jmSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/cerrar-sesion.png"))); // NOI18N
@@ -182,6 +187,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane jdEscritorio;
     private javax.swing.JMenu jmAlumno;
     private javax.swing.JMenu jmInscripcion;
+    private javax.swing.JMenuItem jmInscripciones;
     private javax.swing.JMenu jmMateria;
     private javax.swing.JMenu jmSalir;
     private javax.swing.JMenuItem jmiMateria;
