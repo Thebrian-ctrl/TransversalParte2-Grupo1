@@ -91,6 +91,11 @@ public class Principal extends javax.swing.JFrame {
         jmInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/documento.png"))); // NOI18N
 
         jmInscripciones.setText("Inscripcion");
+        jmInscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmInscripcionesActionPerformed(evt);
+            }
+        });
         jmInscripcion.add(jmInscripciones);
 
         jMenuBar2.add(jmInscripcion);
@@ -145,6 +150,16 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jmiSalirActionPerformed
+
+    private void jmInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmInscripcionesActionPerformed
+        // TODO add your handling code here:
+        
+        jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        VistaInscripcion vista = new VistaInscripcion();
+        vista.setVisible(true);
+        jdEscritorio.add(vista);
+    }//GEN-LAST:event_jmInscripcionesActionPerformed
 
     /**
      * @param args the command line arguments
