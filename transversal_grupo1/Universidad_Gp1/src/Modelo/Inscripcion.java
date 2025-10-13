@@ -42,12 +42,12 @@ public class Inscripcion {
         this.idDescripcion = idDescripcion;
     }
 
-    public alumno getAlu() {
+    public alumno getAlumno() {
         return alumno;
     }
 
-    public void setAlu(alumno alu) {
-        this.alumno = alu;
+    public void setAlumno(alumno alumno) {
+        this.alumno = alumno;
     }
 
     public Materia getMate() {
