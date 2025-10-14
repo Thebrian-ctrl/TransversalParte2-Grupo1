@@ -21,7 +21,7 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -33,6 +33,7 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
         ImageIcon fondo = new ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"));
         Image mifondo = fondo.getImage();
         jdEscritorio = new javax.swing.JDesktopPane(){
@@ -48,9 +49,12 @@ public class Principal extends javax.swing.JFrame {
         jmiMateria = new javax.swing.JMenuItem();
         jmInscripcion = new javax.swing.JMenu();
         jmInscripciones = new javax.swing.JMenuItem();
+        jListarInscripcion = new javax.swing.JMenuItem();
         jMCargarNota = new javax.swing.JMenuItem();
         jmSalir = new javax.swing.JMenu();
         jmiSalir = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,6 +94,11 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar2.add(jmMateria);
 
         jmInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/documento.png"))); // NOI18N
+        jmInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmInscripcionActionPerformed(evt);
+            }
+        });
 
         jmInscripciones.setText("Inscripcion");
         jmInscripciones.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +107,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jmInscripcion.add(jmInscripciones);
+
+        jListarInscripcion.setText("ListaInscripciones");
+        jListarInscripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jListarInscripcionActionPerformed(evt);
+            }
+        });
+        jmInscripcion.add(jListarInscripcion);
 
         jMCargarNota.setText("Cargar Nota");
         jMCargarNota.addActionListener(new java.awt.event.ActionListener() {
@@ -136,7 +153,7 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         jdEscritorio.removeAll();
@@ -162,7 +179,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jmInscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmInscripcionesActionPerformed
         // TODO add your handling code here:
-        
+
         jdEscritorio.removeAll();
         jdEscritorio.repaint();
         VistaInscripcion vista = new VistaInscripcion();
@@ -172,12 +189,26 @@ public class Principal extends javax.swing.JFrame {
 
     private void jMCargarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCargarNotaActionPerformed
         // TODO add your handling code here:
-          jdEscritorio.removeAll();
+        jdEscritorio.removeAll();
         jdEscritorio.repaint();
         VistaCargarNotas nota = new VistaCargarNotas();
         nota.setVisible(true);
         jdEscritorio.add(nota);
     }//GEN-LAST:event_jMCargarNotaActionPerformed
+
+    private void jmInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmInscripcionActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jmInscripcionActionPerformed
+
+    private void jListarInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jListarInscripcionActionPerformed
+        // TODO add your handling code here:
+        jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        VistaListarInscripciones lista = new  VistaListarInscripciones();
+        lista.setVisible(true);
+        jdEscritorio.add(lista);
+    }//GEN-LAST:event_jListarInscripcionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,9 +246,11 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jListarInscripcion;
     private javax.swing.JMenuItem jMCargarNota;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JDesktopPane jdEscritorio;
     private javax.swing.JMenu jmAlumno;
     private javax.swing.JMenu jmInscripcion;
