@@ -148,6 +148,84 @@ public class InscripcionData {
     
     return materias;
     }
+    public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno){
+        List <Inscripcion> inscripciones = new ArrayList<>();
+        String query =" SELECT i.idInscripto, i.nota, m.idMateria, m.nombre, m.anio, m.estado FROM inscripcion i JOIN materia m ON i.idMateria = m.idMateria WHERE i.idAlumno=?";
+        
+        
+        
+        try {
+            PreparedStatement ps = conn.prepareStatement(query);
+            ps.setInt(1, idAlumno);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()){
+             
+                
+                //creamos nuestra inscripcion
+                Inscripcion ins= new Inscripcion();
+                
+                //valores q necesitamos de nuestra isncripcion
+                ins.setIdDescripcion(rs.getInt("idInscripto"));
+                ins.setNota(rs.getDouble("nota"));
+                
+                
+                //creamos nuestra materia 
+                
+                Materia materia= new Materia();
+                
+                
+                //le damos valores a la materia 
+                
+                
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("anio"));
+                materia.setEstado(rs.getInt("estado"));
+                
+                
+                
+                
+                // asignamos la materia a la inscrripcion
+                
+                ins.setMate(materia);
+                
+                inscripciones.add(ins);
+                
+                
+            }
+            ps.close();
+            
+        }catch (SQLException ex){
+            JOptionPane.showMessageDialog(null, "Error al botener las inscripciones.....");
+            
+        }
+        return inscripciones;
+    }
     
+    
+    
+    
+    public void actualizarNota (int idAlumno, int idMateria, double nota){
+        String quary = "UPDATE inscripcion SET nota= ? WHERE idAlumno= ? AND idMateria= ?";
+        
+        try{
+            PreparedStatement ps = conn.prepareStatement(quary);
+            ps.setDouble(1, nota);
+            ps.setInt(2, idAlumno);
+            ps.setInt(3, idMateria);
+            System.out.println("Ejecutando: " + ps.toString()); // <-- debug en consola
+            
+            int exito = ps.executeUpdate();
+            
+            if(exito >0){
+              //  JOptionPane.showMessageDialog(null,"nota actualizada correctamente");
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al actualizar la nota");
+            
+        }
+    }
     
 }

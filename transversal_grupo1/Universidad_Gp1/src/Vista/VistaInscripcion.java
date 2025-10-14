@@ -34,6 +34,7 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
     MateriaData mateData = new MateriaData();
     
     List<alumno> listaAlu = aluData.listarAlumnosActivos();
+  
     
     private DefaultTableModel modelo = new DefaultTableModel();
     
@@ -41,6 +42,8 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
         initComponents();
         cabecera();
         cargarAlumnos();
+   
+       
     }
 
     /**
@@ -81,6 +84,12 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        jcbSeleccionAlumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbSeleccionAlumnoActionPerformed(evt);
+            }
+        });
 
         jlTitulo.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jlTitulo.setText("Inscripcion");
@@ -295,6 +304,13 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jcbSeleccionAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbSeleccionAlumnoActionPerformed
+        // TODO add your handling code here:
+        
+        
+        limpiarTabla();
+    }//GEN-LAST:event_jcbSeleccionAlumnoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
@@ -359,5 +375,8 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
        }
    
    }
+   
+   
+   
    
 }

@@ -48,6 +48,7 @@ public class Principal extends javax.swing.JFrame {
         jmiMateria = new javax.swing.JMenuItem();
         jmInscripcion = new javax.swing.JMenu();
         jmInscripciones = new javax.swing.JMenuItem();
+        jMCargarNota = new javax.swing.JMenuItem();
         jmSalir = new javax.swing.JMenu();
         jmiSalir = new javax.swing.JMenuItem();
 
@@ -97,6 +98,14 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         jmInscripcion.add(jmInscripciones);
+
+        jMCargarNota.setText("Cargar Nota");
+        jMCargarNota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMCargarNotaActionPerformed(evt);
+            }
+        });
+        jmInscripcion.add(jMCargarNota);
 
         jMenuBar2.add(jmInscripcion);
 
@@ -161,6 +170,15 @@ public class Principal extends javax.swing.JFrame {
         jdEscritorio.add(vista);
     }//GEN-LAST:event_jmInscripcionesActionPerformed
 
+    private void jMCargarNotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMCargarNotaActionPerformed
+        // TODO add your handling code here:
+          jdEscritorio.removeAll();
+        jdEscritorio.repaint();
+        VistaCargarNotas nota = new VistaCargarNotas();
+        nota.setVisible(true);
+        jdEscritorio.add(nota);
+    }//GEN-LAST:event_jMCargarNotaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -197,6 +215,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem jMCargarNota;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JDesktopPane jdEscritorio;
