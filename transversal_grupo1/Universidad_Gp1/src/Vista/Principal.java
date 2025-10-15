@@ -71,7 +71,7 @@ public class Principal extends javax.swing.JFrame {
 
         jmAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/graduado.png"))); // NOI18N
 
-        jMenuItem1.setText("Datos");
+        jMenuItem1.setText("Formulario Alumno");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);

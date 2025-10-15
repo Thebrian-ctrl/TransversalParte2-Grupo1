@@ -11,7 +11,6 @@ import Modelo.alumno;
 import Percistencia.InscripcionData;
 import Percistencia.MateriaData;
 import Percistencia.alumnoData;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -27,13 +26,13 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
      * Creates new form VistaInscripcion
      */
     
-    List<Materia> listaMate = new ArrayList<>();
+    private List<Materia> listaMate = new ArrayList<>();
     
-    InscripcionData insData = new InscripcionData();
-    alumnoData aluData = new alumnoData();
-    MateriaData mateData = new MateriaData();
+    private InscripcionData insData = new InscripcionData();
+    private alumnoData aluData = new alumnoData();
+    private MateriaData mateData = new MateriaData();
     
-    List<alumno> listaAlu = aluData.listarAlumnosActivos();
+    private List<alumno> listaAlu = aluData.listarAlumnosActivos();
   
     
     private DefaultTableModel modelo = new DefaultTableModel();
@@ -351,7 +350,7 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
    }
    //Trae a vista las materias no inscriptas del alumno seleccionado en ComboBox
    private void cargarDatosNoInscriptos(){
-       
+       try{
        //creamos un objeto tipo alumno que guarda al alumno seleccionado del combobox
        alumno seleccionado = (alumno)jcbSeleccionAlumno.getSelectedItem();
        
@@ -362,10 +361,13 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
        for (Materia m : listaMate) {
            modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAnio(), m.getEstado()});
        }
-   
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(this, "Error al cargar los datos de las materias no inscriptas" + e.getMessage());
+       }
    }
    
    private void cargarDatosInscriptos(){
+       try{
        alumno seleccionado = (alumno)jcbSeleccionAlumno.getSelectedItem();
        
        List<Materia> listaM = insData.listaMateriasInscriptas(seleccionado.getIdAlumno());
@@ -373,7 +375,9 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
        for (Materia m : listaM) {
            modelo.addRow(new Object[]{m.getIdMateria(), m.getNombre(), m.getAnio(), m.getEstado()});
        }
-   
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(this, "Error al cargar los datos de las materias inscriptas" + e.getMessage());
+       }
    }
    
    

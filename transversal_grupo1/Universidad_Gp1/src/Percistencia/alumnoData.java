@@ -54,7 +54,7 @@ public class alumnoData {
                 }
                 ps.close();
             System.out.println("Guardado");
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
         }
     }
@@ -110,7 +110,7 @@ public class alumnoData {
             }
             ps.close();
             
-        }catch(SQLException ex){
+        }catch(Exception ex){
             
             JOptionPane.showMessageDialog(null, "Error al buscar el alumno por dni ");
         }
@@ -149,7 +149,7 @@ public class alumnoData {
             
             ps.close();
             
-        }catch(SQLException ex){
+        }catch(Exception ex){
             
              JOptionPane.showMessageDialog(null, "Error al listar alumnos activos ");
         }
@@ -169,7 +169,7 @@ public class alumnoData {
                 JOptionPane.showMessageDialog(null, "No se encontro al alumno con ese ID");
              }
              ps.close();
-          }catch(SQLException ex){
+          }catch(Exception ex){
              JOptionPane.showMessageDialog(null, "Error al dar de baja al alumno");
           }
     }
@@ -205,7 +205,7 @@ public class alumnoData {
              }
              ps.close();
 
-           } catch (SQLException ex) {
+           } catch (Exception ex) {
                JOptionPane.showMessageDialog(null, "Error al eliminar al alumno");  
                
              

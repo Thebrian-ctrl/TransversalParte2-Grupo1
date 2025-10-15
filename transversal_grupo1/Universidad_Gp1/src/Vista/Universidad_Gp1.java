@@ -25,7 +25,8 @@ public class Universidad_Gp1 {
      */
     public static void main(String[] args) {
      
-     
+      Principal menu = new Principal();
+      menu.setVisible(true);
 //    alumno brayan = new alumno(42278291, "Arce", "Brayan", LocalDate.of(1999, 12, 16), 1);
 //    
 //    alumnoData alu = new alumnoData();
