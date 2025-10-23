@@ -587,9 +587,30 @@ public class VistaAlumno extends javax.swing.JInternalFrame {
                 return;
             }
          
+            if(!jtNombre.getText().matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+                
+                JOptionPane.showMessageDialog(this, "El nombre debe contener solo texto");
+                
+                jtNombre.requestFocus();
+                return;
+            }
+            
+            if(!jtApellido.getText().matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+                
+                JOptionPane.showMessageDialog(this, "El nombre debe contener solo texto");
+                
+                jtNombre.requestFocus();
+                return;
+            }
+            
+            Integer dni = Integer.parseInt(jtDni.getText());
+            //guardamos el dni de un alumno ya cargado en una variable
+            
+            alumno existente = aluData.buscarAlumnonDni(dni);
+            //verificamos que esa variable sea nula, de lo contrario muestra el mensaje de error           
          
          // convertimos los valores
-             Integer dni = Integer.parseInt(jtDni.getText());
+             
             String apellido = jtApellido.getText();
             String nombre = jtNombre.getText();
             Date fecha = jDateChooser1.getDate();
