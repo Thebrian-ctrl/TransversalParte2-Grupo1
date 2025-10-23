@@ -333,6 +333,15 @@ public class VistaMateria extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "LLene los campos para agregar una materia.");
             }
             
+            //validacion de texto para el nombre de la materia (solo acepta texto y espacio)                    
+            if(!jTextMateria.getText().matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")){
+                
+                JOptionPane.showMessageDialog(this, "El nombre de la materia solo puede contener texto");
+                jTextMateria.requestFocus();
+                return;
+            
+            }
+            
             //capturamos los datos
             String materia = jTextMateria.getText();
             Integer fecha = Integer.parseInt(jTextFecha.getText());

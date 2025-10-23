@@ -198,7 +198,7 @@ public class InscripcionData {
             ps.close();
             
         }catch (SQLException ex){
-            JOptionPane.showMessageDialog(null, "Error al botener las inscripciones.....");
+            JOptionPane.showMessageDialog(null, "Error al obtener las inscripciones.....");
             
         }
         return inscripciones;
