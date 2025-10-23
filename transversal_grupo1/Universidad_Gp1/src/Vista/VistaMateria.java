@@ -494,7 +494,7 @@ public class VistaMateria extends javax.swing.JInternalFrame {
                     jTextFecha.getText().trim().isEmpty() ||
                     jTextEstado.getText().trim().isEmpty()){
                 
-                JOptionPane.showMessageDialog(this, "Complete los datos para dar alta");
+                JOptionPane.showMessageDialog(this, "Complete los datos para eliminar");
                 return;
             }
             
@@ -577,6 +577,8 @@ public class VistaMateria extends javax.swing.JInternalFrame {
         modelo.addColumn("Estado");
         
         jTable1.setModel(modelo);
+        jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.getTableHeader().setResizingAllowed(false);
     
     }
     

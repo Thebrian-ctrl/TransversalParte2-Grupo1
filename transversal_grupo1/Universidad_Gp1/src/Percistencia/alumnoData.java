@@ -119,7 +119,7 @@ public class alumnoData {
     
     
     public List<alumno> listarAlumnosActivos(){
-        String query = "SELECT * FROM alumno WHERE estado=1";
+        String query = "SELECT * FROM alumno";
         List <alumno> alumnos= new ArrayList<>();
         
         

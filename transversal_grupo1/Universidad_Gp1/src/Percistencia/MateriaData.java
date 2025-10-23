@@ -104,7 +104,7 @@ public class MateriaData {
     }
     
     public List<Materia> listarMateriaActivos(){
-        String query = "SELECT * FROM materia WHERE estado=1";
+        String query = "SELECT * FROM materia";
         List <Materia> listamateria= new ArrayList<>();
         
         

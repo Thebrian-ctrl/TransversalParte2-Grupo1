@@ -261,6 +261,8 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
             
             insData.guardarInscripcion(i);
             
+            JOptionPane.showMessageDialog(this, "Inscripcion realizada correctamente");
+            
             limpiarTabla();
         }else{
             JOptionPane.showMessageDialog(this, "Seleccione una materia para hacer la inscripcion");
@@ -335,7 +337,8 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
         modelo.addColumn("Estado");
         
         jTMaterias.setModel(modelo);
-    
+        jTMaterias.getTableHeader().setReorderingAllowed(false);
+        jTMaterias.getTableHeader().setResizingAllowed(false);
     }
 
    private void limpiarTabla(){
